@@ -15,7 +15,7 @@ body, html {
 /* SECTION 1 */
 .hero {
   background: linear-gradient(rgba(70, 30, 150, 0.6), rgba(70, 30, 150, 0.6)), 
-              url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80');
+              url('Images/Page1.jpg');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -48,8 +48,13 @@ nav ul li:hover {
 }
 
 .content {
+  flex: 1; /* take remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
   text-align: center;
-  padding: 40px 20px;
+  padding: 20px;
 }
 
 .content h5 {
@@ -110,16 +115,14 @@ nav ul li:hover {
 
 /* SECTION 2 */
 .section-two {
-  background: linear-gradient(rgba(10, 10, 100, 0.6), rgba(10, 10, 100, 0.6)), 
-              url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
-  background-size: cover;
-  background-position: center;
+  background: url('Images/Page2.jpg') center/cover no-repeat;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 60px 20px;
+  color: white; /* ensures text stays visible */
 }
 
 .section-two .inner {
@@ -132,6 +135,7 @@ nav ul li:hover {
   font-size: 14px;
   letter-spacing: 2px;
   margin-bottom: 20px;
+  opacity: 0.9;
 }
 
 .section-two h1 {
@@ -144,16 +148,13 @@ nav ul li:hover {
   font-size: 16px;
   line-height: 1.8;
   opacity: 0.9;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 15px 20px;
-  border-radius: 8px;
-  display: inline-block;
+  margin: 0 auto;
 }
 
 /* SECTION 3 */
 .section-three {
   background: linear-gradient(rgba(50, 20, 100, 0.6), rgba(50, 20, 100, 0.6)), 
-              url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80');
+              url('Images/PAge3.jpg');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -186,9 +187,30 @@ nav ul li:hover {
   margin-bottom: 40px;
 }
 
+.dots-section3 {
+  display: flex;
+  justify-content: center; 
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dot-section3 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.dot-section3.active {
+  opacity: 1;
+}
+
 /* SECTION 4 */
 .section-four {
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
+  background: url('Images/Page4.jpg');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -415,41 +437,64 @@ nav ul li:hover {
 
 .testimonials {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  justify-content: center;
 }
 
 .testimonials .card {
   background: #241255;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 10px;
-  padding: 25px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
   text-align: left;
   color: #ddd;
 }
 
 .testimonials .card img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  margin-bottom: 15px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #333; /* placeholder background */
+}
+
+.testimonials .card .text {
+  flex: 1;
 }
 
 .testimonials .card p {
   font-size: 14px;
   line-height: 1.6;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 .testimonials .card h4 {
   font-size: 13px;
   font-weight: bold;
-  color: white;
+  color: #aaa;   /* gray font */
+  margin: 0;     /* remove default margins */
 }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .section-five h2 { font-size: 24px; }
+  .testimonials { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .testimonials .card { flex-direction: column; align-items: flex-start; }
+  .testimonials .card img { margin-bottom: 10px; }
+}
+
 
 /* SECTION 6: Call to Action */
 .section-six {
-  background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80');
+  background: url('Images/Page6.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -552,7 +597,7 @@ nav ul li:hover {
 
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, 1fr);  /* Always 2 items per row */
   gap: 25px;
 }
 
@@ -566,7 +611,7 @@ nav ul li:hover {
 
 .work-card img {
   width: 100%;
-  height: 140px;
+  height: 180px;
   object-fit: cover;
   margin-bottom: 10px;
 }
@@ -575,20 +620,28 @@ nav ul li:hover {
   font-size: 12px;
   opacity: 0.7;
   letter-spacing: 1px;
+  margin-bottom: 4px;
 }
 
 .work-card p {
   font-size: 14px;
   font-weight: 600;
-  margin-top: 5px;
 }
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .works-grid {
+    grid-template-columns: 1fr; 
+  }
+}
+
 
 /* SECTION 8: Team */
 .section-eight {
   background: #241255;
   padding: 80px 10%;
   color: white;
-  text-align: center;
+  text-align: left; /* left align heading + text */
 }
 
 .section-eight h2 {
@@ -598,7 +651,7 @@ nav ul li:hover {
 
 .section-eight .intro {
   max-width: 700px;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 50px 0; /* left aligned */
   font-size: 15px;
   line-height: 1.6;
   opacity: 0.9;
@@ -606,9 +659,9 @@ nav ul li:hover {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 30px;
-  justify-items: center;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row */
+  gap: 40px 60px; /* row gap / column gap */
+  max-width: 800px; /* keeps grid aligned left, not full screen */
 }
 
 .team-member {
@@ -632,56 +685,55 @@ nav ul li:hover {
   opacity: 0.8;
 }
 
-.team-member .socials {
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.team-member .socials span {
-  font-size: 14px;
-  cursor: pointer;
-}
-
 /* Responsive tweaks */
-@media (max-width: 768px) {
-  .section-seven h2 { font-size: 22px; }
-  .section-eight h2 { font-size: 24px; }
+@media (max-width: 992px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row for tablets */
+    max-width: 600px;
+  }
 }
 
-@media (max-width: 480px) {
-  .section-seven .header { flex-direction: column; gap: 10px; }
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr; /* stack for phones */
+    max-width: 100%;
+  }
 }
+
 
 /* SECTION 10: Contact Section */
-
 .contact-section {
-
-  /*background: linear-gradient(to right, rgba(20,20,60,0.6), rgba(20,20,60,0.6)),
-              url('https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1600&q=80');*/
+  position: relative;
+  background: url('Images/Contact.jpg');
   background-size: cover;
   background-position: center;
   padding: 80px 10%;
-  color: #241255;
+  color: white;
+}
+
+/* Overlay bluish shade */
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 60, 0.6); /* bluish overlay */
+  z-index: 1;
 }
 
 .contact-wrapper {
+  position: relative;
+  z-index: 2; /* place content above overlay */
   display: flex;
   flex-wrap: wrap;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  overflow: hidden;
+  gap: 40px;
 }
 
 /* Left Side */
 .contact-left {
   flex: 1;
-  padding: 40px;
+  padding: 40px 0;
   min-width: 280px;
-  background: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 .contact-left h2 {
@@ -708,6 +760,8 @@ nav ul li:hover {
   background: white;
   color: #333;
   min-width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .contact-form {
@@ -783,11 +837,10 @@ textarea {
   }
 }
 
-
 /* SECTION 9: Pricing Table */
 .section-nine {
   background: linear-gradient(to bottom, rgba(20,20,60,0.7), rgba(20,20,60,0.7)),
-              url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80');
+              url('Images/PricingTable.jpg');
   background-size: cover;
   background-position: center;
   padding: 80px 10%;
